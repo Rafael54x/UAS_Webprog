@@ -2,37 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KritikSaran;
 use Illuminate\Http\Request;
-use App\Models\Kritik;
-use App\Models\Saran;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\KritikSaranExport;
 
 class KritikSaranController extends Controller
 {
-    public function store_kritik(Request $request)
+    // Show the form
+    public function index()
     {
-        $validated = $request->validate([
-            'kritik' => 'required|min:10|max:1000'
-        ]);
-
-        Kritik::create([
-            'content' => $validated['kritik'],
-            'user_id' => auth()->id() // If you're tracking users
-        ]);
-
-        return back()->with('success', 'Kritik berhasil dikirim!');
+        return view('user/kritik-saran');
     }
 
-    public function store_saran(Request $request)
+    // Store Kritik and Saran
+    public function store(Request $request)
     {
         $validated = $request->validate([
-            'saran' => 'required|min:10|max:1000'
+            'kritik' => 'required|string|max:1000',
+            'saran'  => 'required|string|max:1000',
         ]);
 
-        Saran::create([
-            'content' => $validated['saran'],
-            'user_id' => auth()->id() // If you're tracking users
-        ]);
+        KritikSaran::create($validated);
 
-        return back()->with('success', 'Saran berhasil dikirim!');
+        return redirect()->back()->with('success', 'Thank you for your feedback!');
+    }
+
+    // Export Kritik and Saran to Excel
+    public function exportToExcel()
+    {
+        return Excel::download(new KritikSaranExport, 'kritik_saran.xlsx');
     }
 }

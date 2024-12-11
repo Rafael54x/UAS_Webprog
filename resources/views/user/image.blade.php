@@ -6,8 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gallery</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        /* Ensure the body takes up the full viewport height */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Push the footer to the bottom */
+        main {
+            flex: 1;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 font-sans">
+    <!-- Navbar -->
     <nav class="bg-white shadow-md fixed w-full z-10">
         <div class="container mx-auto flex justify-between items-center py-4 px-6">
           <div class="flex items-center space-x-3">
@@ -29,61 +43,63 @@
             <a href="#" class="hover:text-gray-900">📹</a>
           </div>
         </div>
-      </nav>
-<!-- Header Bar -->
-<div class="bg-gray-800 text-white text-center py-2">
-    <p>Ingin melihat selengkapnya? 
-        <a href="#" class="font-bold text-blue-400 hover:underline">Google Drive</a>
-    </p>
-</div>
+    </nav>
 
-<!-- Title -->
-<h1 class="text-3xl font-bold text-center text-gray-800 mt-6">Gallery</h1>
+    <!-- Header Bar -->
 
-<!-- Grid -->
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 max-w-7xl mx-auto">
-    @foreach ($images as $image)
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <img src="{{ asset('storage/' . $image->path) }}" alt="{{ $image->name }}" class="w-full h-48 object-cover">
-            <div class="p-4 text-center">
-                <p class="text-gray-700 font-medium">{{ $image->category }}</p>
-            </div>
-        </div>
-    @endforeach
-</div>
-<footer class="bg-white py-8 border-t border-gray-300 w-full">
-    <div class="flex flex-col md:flex-row items-center justify-between text-center md:text-left px-6 md:px-12 lg:px-24">
-        <!-- Logo and Name -->
-        <div class="mb-6 md:mb-0 flex flex-col items-center md:items-start">
-            <img src="/img/logo.png" alt="Logo" class="w-16 h-16 mb-2">
-            <h3 class="text-xl font-bold">GBI SION KARAWANG</h3>
-            <p class="text-sm text-gray-600">© GBI Sion Karawang, Inc.</p>
-        </div>
 
-        <!-- Contact Info -->
-        <div class="mb-6 md:mb-0">
-            <h4 class="text-lg font-bold mb-2">CONTACT</h4>
-            <p class="text-sm text-gray-700">
-                Email: <a href="mailto:rbisionkarawang@gmail.com" class="text-blue-500 hover:underline">rbisionkarawang@gmail.com</a>
-            </p>
-            <p class="text-sm text-gray-700">
-                Jl. Tuparev No.335, RT.2/RW.31, Nagasari,<br>
-                Kec. Karawang Bar., Karawang, Jawa Barat 41312
+    <!-- Main Content -->
+    <main class="mt-20">
+        <div class="bg-gray-800 text-white text-center py-2">
+            <p>Ingin melihat selengkapnya? 
+                <a href="#" class="font-bold text-blue-400 hover:underline">Google Drive</a>
             </p>
         </div>
+        <h1 class="text-3xl font-bold text-center text-gray-800">Gallery</h1>
 
-        <!-- Social Media Links -->
-        <div>
-            <h4 class="text-lg font-bold mb-2">FOLLOW US</h4>
-            <div class="flex space-x-4 justify-center md:justify-start">
-                <a href="#" class="text-gray-600 hover:text-blue-500"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-gray-600 hover:text-blue-500"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="text-gray-600 hover:text-blue-500"><i class="fab fa-spotify"></i></a>
-                <a href="#" class="text-gray-600 hover:text-blue-500"><i class="fab fa-youtube"></i></a>
+        <!-- Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 max-w-7xl mx-auto">
+            @foreach ($images as $image)
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="{{ asset('storage/' . $image->path) }}" alt="Image" class="w-full h-48 object-cover">
+                </div>
+            @endforeach
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 border-t border-gray-300">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-start space-y-6 md:space-y-0 px-6 md:px-12 lg:px-24">
+            <!-- Logo and Name -->
+            <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                <img src="/img/logo.png" alt="Logo" class="w-16 h-16 mb-2">
+                <h3 class="text-xl font-bold">GBI SION KARAWANG</h3>
+                <p class="text-sm text-gray-600">© GBI Sion Karawang, Inc.</p>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h4 class="text-lg font-bold mb-2">CONTACT</h4>
+                <p class="text-sm text-gray-700">
+                    Email: <a href="mailto:rbisionkarawang@gmail.com" class="text-blue-500 hover:underline">rbisionkarawang@gmail.com</a>
+                </p>
+                <p class="text-sm text-gray-700">
+                    Jl. Tuparev No.335, RT.2/RW.31, Nagasari,<br>
+                    Kec. Karawang Bar., Karawang, Jawa Barat 41312
+                </p>
+            </div>
+
+            <!-- Social Media Links -->
+            <div>
+                <h4 class="text-lg font-bold mb-2">FOLLOW US</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-blue-500"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-blue-500"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-blue-500"><i class="fab fa-spotify"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-blue-500"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 </body>
-
 </html>

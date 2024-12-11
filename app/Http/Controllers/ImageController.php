@@ -17,25 +17,37 @@ class ImageController extends Controller
     // Display admin page
     public function admin()
     {
-        return view('admin-image');
+        return view('/admin/admin-image');
     }
 
     // Handle image upload
-    public function upload(Request $request)
-    {
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+public function upload(Request $request)
+{
+    // Validate the incoming request
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
-        $imageName = time() . '.' . $request->image->extension();
-        $path = $request->image->storeAs('images', $imageName, 'public');
+    // Define the default path for the image (fallback if no image is uploaded)
+    $defaultPath = 'default/path/to/image.jpg';
 
-        Image::create([
-            'name' => $imageName,
-            'path' => $path,
-            'category' => $request->category ?? 'Uncategorized',
-        ]);
-
-        return back()->with('success', 'Image uploaded successfully.');
+    // Check if an image is uploaded
+    if ($request->hasFile('image')) {
+        // Store the image and get the path
+        $imagePath = $request->file('image')->store('images', 'public'); // 'public' is the disk defined in config/filesystems.php
+    } else {
+        // Use the default path if no image is uploaded
+        $imagePath = $defaultPath;
     }
+
+    // Store the image and other data into the database
+    $image = new Image(); // Assuming you have an Image model
+    $image->name = $validated['name'];
+    $image->path = $imagePath; // Save the image path
+    $image->save();
+
+    // Redirect or return a response
+    return back()->with('success', 'Image uploaded successfully.');}
+
 }

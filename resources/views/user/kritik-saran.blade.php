@@ -51,18 +51,19 @@
                 "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit."
             </h1>
 
+            
+            <form method="POST" action="{{ route('kritik-saran.store') }}">
+                @csrf
             <div class="flex flex-col lg:flex-row gap-20">
                 <div class="flex-1">
                     <div class="mb-16">
                         <h2 class="font-extrabold text-[34.717px] text-[#1E1E1E] mb-4">Kritik:</h2>
                         <div class="relative">
                             <textarea 
+                            name="kritik"
                                 class="w-full h-[213.73px] bg-[rgba(233,233,233,0.65)] border-[2.16981px] border-[#B6B6B6] rounded-[21.6981px] p-6 text-[22px] leading-[29px] resize-none"
                                 placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                             ></textarea>
-                            <button class="absolute -bottom-16 right-0 w-[146px] h-[51px] bg-[#1E1E1E] rounded-[32.5472px] text-white font-extrabold text-[23px]">
-                                Kirim
-                            </button>
                         </div>
                     </div>
 
@@ -71,15 +72,17 @@
                         <h2 class="font-extrabold text-[34.717px] text-[#1E1E1E] mb-4">Saran:</h2>
                         <div class="relative">
                             <textarea 
+                            name="saran"
                                 class="w-full h-[213.73px] bg-[rgba(233,233,233,0.65)] border-[2.16981px] border-[#B6B6B6] rounded-[21.6981px] p-6 text-[22px] leading-[29px] resize-none"
                                 placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                             ></textarea>
-                            <button class="absolute -bottom-16 right-0 w-[146px] h-[51px] bg-[#1E1E1E] rounded-[32.5472px] text-white font-extrabold text-[23px]">
-                                Kirim
-                            </button>
                         </div>
+                        <button type="submit" class="w-[146px] h-[51px] bg-[#1E1E1E] rounded-[32.5472px] text-white font-extrabold text-[23px] mt-8">
+                            Kirim
+                        </button>
                     </div>
                 </div>
+            </form>
 
                 <!-- Decorative Images -->
                 <div class="flex-1 relative hidden lg:block">

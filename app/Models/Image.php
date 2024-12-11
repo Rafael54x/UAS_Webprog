@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     use HasFactory;
+
+    // Define which attributes are mass assignable
+    protected $fillable = ['name'];
 }
