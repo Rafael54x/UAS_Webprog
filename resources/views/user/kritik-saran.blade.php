@@ -17,29 +17,7 @@
     </style>
 </head>
 <body class="bg-[#F0F0F0]">
-    <nav class="bg-white shadow-md fixed w-full z-10">
-        <div class="container mx-auto flex justify-between items-center py-4 px-6">
-          <div class="flex items-center space-x-3">
-            <img src="/img/logo.png" alt="GBI Sion Karawang Logo" class="h-10 w-auto">
-            <a href="/" class="text-xl font-bold text-gray-800">GBI Sion Karawang</a>
-          </div>
-          <ul class="flex space-x-6 text-gray-600 font-medium">
-            <li><a href="/" class="hover:text-gray-900">Home</a></li>
-            <li><a href="/jadwal" class="hover:text-gray-900">Jadwal</a></li>
-            <li><a href="/image" class="hover:text-gray-900">Galeri</a></li>
-            <li><a href="/daftar" class="hover:text-gray-900">Pendaftaran</a></li>
-            <li><a href="/kritik-saran" class="hover:text-gray-900">Kritik & Saran</a></li>
-            <li><a href="/faq" class="hover:text-gray-900">FAQ</a></li>
-            <li><a href="/about-us" class="hover:text-gray-900">About Us</a></li>
-          </ul>
-          <div class="flex space-x-4 text-gray-600">
-            <a href="#" class="hover:text-gray-900">🔍</a>
-            <a href="#" class="hover:text-gray-900">⚙</a>
-            <a href="#" class="hover:text-gray-900">📹</a>
-          </div>
-        </div>
-      </nav>
-
+    @include('layouts.navbar')
     <!-- Main Content -->
     <div class="relative min-h-screen pt-24">
         <div class="absolute inset-0 bg-image opacity-80 z-0">
