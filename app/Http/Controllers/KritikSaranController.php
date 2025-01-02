@@ -15,6 +15,11 @@ class KritikSaranController extends Controller
         return view('user/kritik-saran');
     }
 
+    public function kritiksaran()
+    {
+        return view('admin/admin-kritiksaran');
+    }
+
     // Store Kritik and Saran
     public function store(Request $request)
     {
@@ -28,6 +33,17 @@ class KritikSaranController extends Controller
         return redirect()->back()->with('success', 'Thank you for your feedback!');
     }
 
+    public function view()
+    {
+        $data = KritikSaran::all();
+        return view('admin/admin-kritiksaran', compact('data'));
+    }
+
+    public function clear()
+    {
+        KritikSaran::truncate();
+        return redirect()->route('kritik-saran.view')->with('success', 'All data cleared successfully!');
+    }
     // Export Kritik and Saran to Excel
     public function exportToExcel()
     {

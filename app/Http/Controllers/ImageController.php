@@ -3,51 +3,72 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Image;
+
 
 class ImageController extends Controller
 {
-    // Display user page
+    /**
+     * Display user gallery page.
+     */
     public function image()
     {
         $images = Image::all();
         return view('/user/image', compact('images'));
     }
 
-    // Display admin page
+    /**
+     * Display admin page for managing images.
+     */
     public function admin()
     {
-        return view('/admin/admin-image');
+        $images = Image::all();
+        return view('/admin/admin-image', compact('images'));
     }
 
-    // Handle image upload
-public function upload(Request $request)
-{
-    // Validate the incoming request
-    $validated = $request->validate([
-        'name' => 'required|string|max:255',
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-    ]);
+    /**
+     * Handle image upload.
+     */
+    public function upload(Request $request)
+    {
+        // Validate the incoming request
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-    // Define the default path for the image (fallback if no image is uploaded)
-    $defaultPath = 'default/path/to/image.jpg';
+        // Store the uploaded image
+        $imagePath = $request->file('image')->store('images', 'public');
 
-    // Check if an image is uploaded
-    if ($request->hasFile('image')) {
-        // Store the image and get the path
-        $imagePath = $request->file('image')->store('images', 'public'); // 'public' is the disk defined in config/filesystems.php
-    } else {
-        // Use the default path if no image is uploaded
-        $imagePath = $defaultPath;
+        // Save the image details to the database
+        $image = new Image();
+        $image->name = $validated['name'];
+        $image->path = $imagePath;
+        $image->save();
+
+        // Redirect back with a success message
+        return back()->with('success', 'Image uploaded successfully.');
     }
 
-    // Store the image and other data into the database
-    $image = new Image(); // Assuming you have an Image model
-    $image->name = $validated['name'];
-    $image->path = $imagePath; // Save the image path
-    $image->save();
+    /**
+     * Handle image deletion.
+     */
+    public function delete($id)
+    {
+        // Find the image by ID
+        $image = Image::findOrFail($id);
 
-    // Redirect or return a response
-    return back()->with('success', 'Image uploaded successfully.');}
+        // Check if the image file exists in storage and delete it
+        if (Storage::disk('public')->exists($image->path)) {
+            Storage::disk('public')->delete($image->path);
+        }
 
+        // Delete the database record
+        $image->delete();
+
+        // Redirect back with a success message
+        return back()->with('success', 'Image deleted successfully.');
+    }
+    
 }

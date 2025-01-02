@@ -9,5 +9,5 @@ class KritikSaran extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['kritik', 'saran'];
+    protected $fillable = ['kritik', 'saran', 'timestamp'];
 }
