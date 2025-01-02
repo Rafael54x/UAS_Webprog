@@ -7,12 +7,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..600;1,14..32,100..600&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
-
-        li {
-            font-weight: 900;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
     </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    </style>
+    
     <script src="https://kit.fontawesome.com/f62928dd38.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -37,10 +37,10 @@
             </ul>
 
             <div class="hidden lg:flex space-x-4 text-black">
-                <a href="https://www.instagram.com/gbision/" class="text-black hover:text-blue-500"><i class="fab fa-instagram text-2xl"></i></a>
-                <a href="#" class="text-black hover:text-blue-500"><i class="fa-brands fa-x-twitter text-2xl"></i></a>
-                <a href="#" class="text-black hover:text-blue-500"><i class="fab fa-spotify text-2xl"></i></a>
-                <a href="https://www.youtube.com/c/GbiSion_KRW" class="text-black hover:text-blue-500"><i class="fab fa-youtube text-2xl"></i></a>
+                <a href="https://www.instagram.com/gbision/" target="_blank" class="text-black hover:text-blue-500"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" target="_blank" class="text-black hover:text-blue-500"><i class="fa-brands fa-x-twitter text-xl"></i></a>
+                <a href="#" target="_blank" class="text-black hover:text-blue-500"><i class="fab fa-spotify text-xl"></i></a>
+                <a href="https://www.youtube.com/c/GbiSion_KRW" target="_blank" class="text-black hover:text-blue-500"><i class="fab fa-youtube text-xl"></i></a>
             </div>
         </div>
 
@@ -54,10 +54,10 @@
                 <li><a href="/faq" class="hover:text-gray-600">FAQ</a></li>
                 <li><a href="/about-us" class="hover:text-gray-600">About Us</a></li>
                 <div class="flex space-x-4 text-black mt-4">
-                    <a href="https://www.instagram.com/gbision/" class="text-black hover:text-blue-500"><i class="fab fa-instagram text-2xl"></i></a>
-                    <a href="#" class="text-black hover:text-blue-500"><i class="fa-brands fa-x-twitter text-2xl"></i></a>
-                    <a href="#" class="text-black hover:text-blue-500"><i class="fab fa-spotify text-2xl"></i></a>
-                    <a href="https://www.youtube.com/c/GbiSion_KRW" class="text-black hover:text-blue-500"><i class="fab fa-youtube text-2xl"></i></a>
+                    <a href="https://www.instagram.com/gbision/" target="_blank" class="text-black hover:text-blue-500"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="#" target="_blank" class="text-black hover:text-blue-500"><i class="fa-brands fa-x-twitter text-xl"></i></a>
+                    <a href="#" target="_blank" class="text-black hover:text-blue-500"><i class="fab fa-spotify text-xl"></i></a>
+                    <a href="https://www.youtube.com/c/GbiSion_KRW" target="_blank" class="text-black hover:text-blue-500"><i class="fab fa-youtube text-xl"></i></a>
                 </div>
             </ul>
         </div>

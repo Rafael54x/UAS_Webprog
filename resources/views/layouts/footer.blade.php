@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gbi Sion Karawang</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap');
+    </style>
+</head>
+<body>
 <footer class="bg-white py-8 border-t border-gray-300 w-full">
     <div class="flex flex-col md:flex-row items-start md:items-center justify-between px-6 md:px-12 lg:px-24">
         <!-- Logo and Name -->
@@ -38,3 +53,5 @@
         </div>
     </div>
 </footer>
+</body>
+</html>

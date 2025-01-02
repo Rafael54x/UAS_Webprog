@@ -18,9 +18,9 @@
         <p class="text-black mb-6 leading-relaxed">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra.
         </p>
-        <button class="bg-black text-white font-bold py-3 px-6 rounded-full hover:bg-gray-800 flex items-center">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfi_uBOyEJiVTYqyLWHUkfgqy7DlIMaD_kAt4mGoB8JHqLDQQ/viewform" target="_blank"><button class="bg-black text-white font-bold py-3 px-6 rounded-full hover:bg-gray-800 flex items-center">
           <span class="text-lg">DAFTAR DISINI</span>
-        </button>
+        </button></a>
       </div>
       
       <!-- Image Content -->
