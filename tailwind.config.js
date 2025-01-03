@@ -20,7 +20,12 @@ export default {
             },
             colors: {
                 black: '#1E1E1E',
-                white: '#F5F5F5'
+                white: '#F5F5F5',
+                clifford: "#da373d",
+                white: "#FFFFFF",
+                black: "#1E1E1E",
+                grey: "#F0F0F0",
+                oldgrey: "#737373"
             }
         },
     },
