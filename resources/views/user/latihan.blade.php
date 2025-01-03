@@ -39,7 +39,7 @@
         <div>
           <img src="/img/header.jpg" alt="Header" class="h-[350px] object-cover w-full">
         </div>
-      <h1 class="mt-12 font-inter font-extrabold text-[50px] text-center">Acara Mendatang</h1>
+      <h1 class="mt-12 font-inter font-extrabold text-[50px] text-center">Jadwal Latihan</h1>
     </div>
 
     <div class="flex flex-row gap-8 mx-32 mt-12">
