@@ -14,7 +14,7 @@ class CarousellController extends Controller
     public function index()
     {
         // Fetch up to 5 carousell images from the database
-        $images = Carousell::select('carousell')->take(5)->get();
+        $images = Carousell::all();
 
         // Pass the images to the Blade view
         return view('/layouts/app', compact('images'));

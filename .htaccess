@@ -1,0 +1,49 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Check If File Or Directory Exists
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Send Requests To The Index File
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Enable caching for static assets
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js|svg|woff|woff2|ttf|otf|eot|ico|jpg|jpeg|png|gif|webp)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+</IfModule>
+
+# Set the correct MIME types for JavaScript (ESM) and CSS
+<IfModule mod_mime.c>
+    AddType text/javascript .js
+    AddType text/css .css
+</IfModule>
+
+# Enable CORS for JavaScript Modules
+<IfModule mod_headers.c>
+    <FilesMatch "\.(js|mjs)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
+
+# Redirect for Vite HMR (Hot Module Replacement) if running in development mode
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_URI} ^/vite
+    RewriteRule ^(.*)$ http://localhost:5173/$1 [P,L]
+</IfModule>
